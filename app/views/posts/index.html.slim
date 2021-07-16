@@ -1,0 +1,17 @@
+
+    .container
+	h5.text-success Posts :
+	ul
+	  - @posts.each do |post|
+	    li 
+	      h6.fw-bold  
+	      	=post.author
+
+	      h6
+	      | -	
+	      = post.body
+
+	      p.fw-lighter
+	       small
+	       	= post.created_at.to_date.strftime ("%d ,%b %y")
+	    br
