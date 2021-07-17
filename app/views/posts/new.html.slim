@@ -1,8 +1,5 @@
 
 .container
-  - if @error
-    small.alert.alert-danger
-      =@error.join(",")
   br    
   h6
     |  Add New Post
@@ -20,8 +17,13 @@
         = f.text_area :body, class: "form-control"
     .form-group
       br
-      = f.submit 'Save' ,class: "btn btn-outline-success btn-sm"
+      = f.submit 'Save' ,class: "btn btn-success btn-sm"
       br
       br
-      = link_to "Back", posts_path, class: "btn btn-outline-secondary btn-sm"
+      = link_to "Back", posts_path, class: "btn btn-secondary btn-sm"
+  br
+  - if @error
+    .col-auto
+      small.alert.alert-danger
+        =@error.join(",")
         
