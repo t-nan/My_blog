@@ -1,6 +1,7 @@
 
     .container
-	h5.text-success Posts :
+	h5.text-success 
+		|Posts :
 	ul
 	  - @posts.each do |post|
 	    li 
@@ -9,9 +10,9 @@
 
 	      h6
 	      | -	
-	      = post.body
+	      = link_to post.body,post_path(post), class: "text-decoration-none text-secondary"
 
-	      p.fw-lighter
+	      p.fw-ligh
 	       small
-	       	= post.created_at.to_date.strftime ("%d ,%b %y")
+	       	= post.created_at.strftime ("%e %b %y, at %H:%M")
 	    br
