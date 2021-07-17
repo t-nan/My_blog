@@ -2,9 +2,20 @@
 br
 ul
 	li
-		h6
+		h6.text-secondary
 			=@post.author
 		.col-sm-8
 			h6.lh-lg
+				|-
 				=@post.body
+
+	br
+    br
+    	= link_to 'Edit',edit_post_path(@post) ,class: "btn btn-warning btn-sm"
+      	|  or 
+    	= link_to 'Delete',post_path(@post),method: :delete ,class: "btn btn-danger btn-sm"
+    br
+    br
+    	= link_to "< Back", posts_path, class: "btn btn-secondary btn-sm"
+
 
