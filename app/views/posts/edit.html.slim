@@ -1,0 +1,28 @@
+.container
+  br    
+  h6
+    |  Edit Post
+  br
+  = form_for :post,url: post_path(@post) , method: :put  do |f|
+    .form-row
+      .form-group.col-sm-3
+        small
+          = f.label :author
+        = f.text_field :author, class: "form-control"
+    .form-row
+      .form-group.col-sm-6
+        small
+          = f.label :body
+        = f.text_area :body, class: "form-control"
+    .form-group
+      br
+      = f.submit 'Save' ,class: "btn btn-outline-success btn-sm"
+      br
+      br
+      = link_to "Back", posts_path, class: "btn btn-outline-secondary btn-sm"
+  br
+  - if @error
+    .col-auto
+      small.alert.alert-danger
+        =@error.join(",")
+        
