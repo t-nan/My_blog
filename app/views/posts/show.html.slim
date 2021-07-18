@@ -1,21 +1,85 @@
-.container
 br
-ul
-	li
-		h6.text-secondary
-			=@post.author
-		.col-sm-8
+.mycontainer
+	.row
+
+		.col-8
+		  .shadow.p-3.mb-5.bg-white.rounded
+			h6.text-secondary
+				=@post.author
+				| : 
 			h6.lh-lg
-				|-
 				=@post.body
+		  p		
 
-	br
-    br
-    	= link_to 'Edit',edit_post_path(@post) ,class: "btn btn-warning btn-sm"
-      	|  or 
-    	= link_to 'Delete',post_path(@post),method: :delete ,class: "btn btn-danger btn-sm"
-    br
-    br
-    	= link_to "< Back", posts_path, class: "btn btn-secondary btn-sm"
+				button.btn.btn-primary.btn-sm[type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"]
+				  |  Comment
+				br
+				br		
+		    	= link_to 'Edit',edit_post_path(@post) ,class: "btn btn-warning btn-sm"
+		      	|  or 
+		    	= link_to 'Delete',post_path(@post),method: :delete ,class: "btn btn-danger btn-sm"
+		    	br
+		    	br
+		    	= link_to "< Back", posts_path, class: "btn btn-secondary btn-sm"
+		    	br
+		    	br
 
 
+
+				#exampleModal.modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"]
+				  .modal-dialog
+				    .modal-content
+				      .modal-header
+				        h5#exampleModalLabel.modal-title
+				          | Add comment
+				        button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
+				      .modal-body
+
+				        = form_for :comment,url: post_comments_path(@post,@comment) do |f|
+						    .form-row
+						      .form-group.col-sm-3
+						        small
+						          = f.label :author
+						        = f.text_field :author, class: "form-control"
+						    .form-row
+						      .form-group.col-sm-12
+						        small
+						          = f.label :body
+						        = f.text_area :body, class: "form-control"
+						    .form-group
+						      br
+						      = f.submit 'Save' ,class: "btn btn-success btn-sm" 
+				      
+
+
+		.col-4.text-center
+		  .shadow-none.p-3.mb-5.bg-light.rounded
+			 
+		    
+			h6.text-secondary
+			  | Comments 
+			br
+		
+			  - @comments.each do |comment|
+			   
+			     .shadow.p-3.mb-5.bg-white.rounded
+			       small.text-secondary.fw-bold
+			      	=comment.author
+		           	| :
+		           	br
+				   small.text-secondary
+				   	| -	
+				    =comment.body
+                   br
+                   br
+				   p.fw-ligh.text-secondary
+				   	small
+				     = comment.created_at.strftime ("%e %b %y, at %H:%M")
+			  
+
+						
+
+
+
+					
+						  

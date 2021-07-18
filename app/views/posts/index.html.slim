@@ -1,18 +1,21 @@
 
     .container
+    .row
 	h5.text-success 
 		|Posts :
 	ul
+	 .col-8
 	  - @posts.each do |post|
 	    li 
+	     .shadow.p-3.mb-5.bg-white.rounded
 	      h6.fw-bold  
 	      	=post.author
+          .col-sm-12
+		      h6	
+		      = link_to post.body,post_path(post), class: "text-decoration-none text-secondary"
 
-	      h6
-	      | -	
-	      = link_to post.body,post_path(post), class: "text-decoration-none text-secondary"
-
-	      p.fw-ligh
-	       small
-	       	= post.created_at.strftime ("%e %b %y, at %H:%M")
+		      p.fw-ligh
+		       small
+		       	= post.created_at.strftime ("%e %b %y, at %H:%M")
+	 
 	    br
