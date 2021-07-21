@@ -9,11 +9,33 @@ br
 				| : 
 			h6.lh-lg
 				=@post.body
+
+			p.fw-ligh
+			  small
+				= @post.created_at.strftime ("%e %b %y, at %H:%M")	
+
+			p.fw-ligh
+				= render "posts/votes_up" , post: @post
+				= render "posts/votes_down" , post: @post
+
+
+            -if user_signed_in?
+            	p.fw-ligh
+				    = render "posts/upvote_link" , post: @post
+				    br
+				    = render "posts/downvote_link" , post: @post
+				    br
+			    button.btn.btn-outline-primary.btn-sm[type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"]
+				  	 | Comment
+			-else
+				small.fw-ligh.text-secondary
+					| Log in to vote & comment
+
+
 		  p		
 
-				button.btn.btn-primary.btn-sm[type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"]
-				  |  Comment
-				br
+				
+				
 				br		
 		    	= link_to 'Edit',edit_post_path(@post) ,class: "btn btn-warning btn-sm"
 		      	|  or 
@@ -57,13 +79,12 @@ br
 			 
 		    
 			h6.text-secondary
-			  | Comments 
+			  | Comments :
 			br
-		
+			 -if @comments.any?		
 			  - @comments.each do |comment|
-			   
-			     .shadow.p-3.mb-5.bg-white.rounded
-			       small.text-secondary.fw-bold
+			     .shadow.p-3.mb-5.bg-white.rounded			     
+			       small.text-secondary.fw-bold			     
 			      	=comment.author
 		           	| :
 		           	br
@@ -75,6 +96,9 @@ br
 				   p.fw-ligh.text-secondary
 				   	small
 				     = comment.created_at.strftime ("%e %b %y, at %H:%M")
+			 -else
+			   small.text-secondary
+			  	| No comments yet...
 			  
 
 						
