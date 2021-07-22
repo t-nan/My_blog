@@ -6,6 +6,8 @@
 			      h6.fw-bold  
 			      	=post.author
 		          .col-sm-12
+		              small.text-secondary
+						=post.tag 
 				      h6	
 				      = link_to post.body.truncate(300,omission: '...'),post_path(post), class: "text-decoration-none text-secondary"
 
@@ -16,7 +18,7 @@
 				      p.fw-ligh
 				       small.text-success
 				       	= post.cached_votes_up
-				       	|  Llike(s)
+				       	|  Like(s)
  	
 
 				      p.fw-ligh

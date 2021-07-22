@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_145529) do
 
   create_table "posts", force: :cascade do |t|
     t.string "author"
+    t.string "tag"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

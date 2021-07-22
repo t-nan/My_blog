@@ -10,6 +10,11 @@
           = f.label :author
         = f.text_field :author, class: "form-control"
     .form-row
+      .form-group.col-sm-3
+        small
+          = f.label :tag
+        = f.text_field :tag, class: "form-control"    
+    .form-row
       .form-group.col-sm-12
         small
           = f.label :body

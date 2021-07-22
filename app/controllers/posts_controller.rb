@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     @search = Post.ransack(params[:q])
 
-    @p = @search.result(distinct: true).paginate(page: params[:page], per_page: 7)
+    @p = @search.result(distinct: true).paginate(page: params[:page], per_page: 10)
     
   end
 
@@ -83,7 +83,7 @@ class PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:author,:body)
+    params.require(:post).permit(:author,:tag, :body)
   end
 
 end
