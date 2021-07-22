@@ -9,17 +9,17 @@
       .form-group.col-sm-3
         small
           = f.label :author
-        = f.text_field :author, class: "form-control"
+        = f.text_field :author, class: "form-control" , value: current_user.username, required: true ,disabled: true
     .form-row
       .form-group.col-sm-3
         small
           = f.label :tag
-        = f.text_field :tag, class: "form-control"    
+        = f.text_field :tag, class: "form-control", required: true   
     .form-row
       .form-group.col-sm-6
         small
           = f.label :body
-        = f.text_area :body, class: "form-control"
+        = f.text_area :body, class: "form-control", required: true
     .form-group
       br
       = f.submit 'Save' ,class: "btn btn-success btn-sm"

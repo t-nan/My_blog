@@ -61,15 +61,15 @@ br
 
 				        = form_for :comment,url: post_comments_path(@post,@comment) do |f|
 						    .form-row
-						      .form-group.col-sm-3
+						      .form-group.col-sm-5
 						        small
 						          = f.label :author
-						        = f.text_field :author, class: "form-control"
+						        = f.text_field :author, class: "form-control", value: @post.author , required: true ,disabled: true
 						    .form-row
 						      .form-group.col-sm-12
 						        small
 						          = f.label :body
-						        = f.text_area :body, class: "form-control"
+						        = f.text_area :body, class: "form-control",required: true
 						    .form-group
 						      br
 						      = f.submit 'Save' ,class: "btn btn-success btn-sm" 

@@ -2,10 +2,10 @@
 - if @p.any?
   .mycontainer
     = search_form_for @search do |f|
-     .alert.alert-light[role="alert"]
+     .alert.alert-success
 	     .row
 	      
-	      .col-sm-5
+	      .col-sm-5.text-center
             
             = link_to 'Reset', posts_path, class: 'btn btn-secondary rounded-pill'
 		    |  Sort by : 
@@ -17,15 +17,14 @@
 		    |  |
 		    = sort_link(@search, :cached_votes_down, ' dislikes ', default_order: :desc)
 		    |  |
-		    |  
-		    |
+		  
 		    
 
 		  .col-auto
 	        = f.label :tag_cont, 'Search by tags : ', class: 'col-form-label'
 	      .col-sm-3
 	        = f.text_field :tag_cont, class: 'form-control'
-	      .col-sm-1  
+	      .col-sm-1
 	        = f.submit 'Search', class: 'btn btn-secondary rounded-pill' 
 
 	 br 
