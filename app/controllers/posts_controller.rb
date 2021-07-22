@@ -3,7 +3,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy ,:upvote ,:downvote]
 
   def index
-    @posts = Post.all.order(cached_votes_score: :desc)    
+    @posts = Post.all.order(cached_votes_score: :desc)
+
+    @posts_count = Post.count
+
+    @search = Post.ransack(params[:q])
+
+    @p = @search.result(distinct: true).paginate(page: params[:page], per_page: 7)
+    
   end
 
   def upvote

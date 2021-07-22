@@ -1,0 +1,30 @@
+
+		-@p.each do |post|
+	     .row 
+			 .col-8		  
+				.shadow.p-3.mb-5.bg-white.rounded
+			      h6.fw-bold  
+			      	=post.author
+		          .col-sm-12
+				      h6	
+				      = link_to post.body.truncate(300,omission: '...'),post_path(post), class: "text-decoration-none text-secondary"
+
+				      p.fw-ligh
+				       small
+				       	= post.created_at.strftime ("%e %b %y, at %H:%M")
+
+				      p.fw-ligh
+				       small.text-success
+				       	= post.cached_votes_up
+				       	|  Llike(s)
+ 	
+
+				      p.fw-ligh
+				       small.text-danger
+				       	= post.cached_votes_down
+				       	|  Dislike(s)
+
+				      p.fw-ligh
+				       small.text-secondary
+				       	= post.comments.count
+				       	|  Comment(s)

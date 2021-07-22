@@ -1,36 +1,58 @@
 
-	.mycontainer
-		-@posts.each do |post|
-	     .row 
-			 .col-8		  
-				.shadow.p-3.mb-5.bg-white.rounded
-			      h6.fw-bold  
-			      	=post.author
-		          .col-sm-12
-				      h6	
-				      = link_to post.body.truncate(300,omission: '...'),post_path(post), class: "text-decoration-none text-secondary"
+- if @p.any?
+  .mycontainer
+    = search_form_for @search do |f|
+     .alert.alert-light[role="alert"]
+	     .row
+	      
+	      .col-sm-5
+            
+            = link_to 'Reset', posts_path, class: 'btn btn-secondary rounded-pill'
+		    |  Sort by : 
+		    = sort_link(@search, :created_at, ' addition time ', default_order: :desc)
+		    |  |
+		    = sort_link(@search, :cached_votes_total, ' number of votes ', default_order: :desc)
+		    |  | 
+		    = sort_link(@search, :cached_votes_up, ' likes ', default_order: :desc)
+		    |  |
+		    = sort_link(@search, :cached_votes_down, ' dislikes ', default_order: :desc)
+		    |  |
+		    |  
+		    |
+		    
 
-				      p.fw-ligh
-				       small
-				       	= post.created_at.strftime ("%e %b %y, at %H:%M")
+		  .col-auto
+	        = f.label :body_cont, 'Search by tags : ', class: 'col-form-label'
+	      .col-sm-3
+	        = f.text_field :body_cont, class: 'form-control'
+	      .col-sm-1  
+	        = f.submit 'Search', class: 'btn btn-secondary rounded-pill' 
 
-				      p.fw-ligh
-				       small.text-success
-				       	= post.cached_votes_up
-				       	|  Llike(s)
- 	
+	 br 
+	 br
+     
+    = render "p"
 
-				      p.fw-ligh
-				       small.text-danger
-				       	= post.cached_votes_down
-				       	|  Dislike(s)
+	.digg_pagination
+	  .page_info
+	    = page_entries_info @p
+	    br
+	    br
+	  .text-secondary 
+	    = will_paginate @p
 
-				      p.fw-ligh
-				       small.text-secondary
-				       	= post.comments.count
-				       	|  Comment(s)
 
-				      
-				       
-		      
-	
+    
+- elsif params[:q].present?
+  .mycontainer
+  	.row
+  	  .col-sm-3
+		  .alert.alert-warning[role="alert"]
+		    |  Out of 
+		    = @posts_count
+		    |  posts, 0 were found
+		  p
+		    = link_to 'Show all posts', posts_path, class: 'btn btn-outline-secondary btn-sm'
+
+
+				
