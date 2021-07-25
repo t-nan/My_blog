@@ -1,4 +1,5 @@
 .container
+ .p-3.mb-2.bg-white.text-dark
   br    
   h6
     |  Edit Post
@@ -8,7 +9,7 @@
       .form-group.col-sm-3
         small
           = f.label :author
-        = f.text_field :author, class: "form-control"
+        = f.text_field :author, class: "form-control", readonly: true , hidden: true
     .form-row
       .form-group.col-sm-3
         small

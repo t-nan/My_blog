@@ -1,34 +1,39 @@
 
 .container
-  br    
-  h6
-    |  Add New Post
-  br
-  = form_for :post,url: posts_path do |f|
-    .form-row
-      .form-group.col-sm-3
-        small
-          = f.label :author
-        = f.text_field :author, class: "form-control" , value: current_user.username, required: true ,disabled: true
-    .form-row
-      .form-group.col-sm-3
-        small
-          = f.label :tag
-        = f.text_field :tag, class: "form-control", required: true   
-    .form-row
-      .form-group.col-sm-6
-        small
-          = f.label :body
-        = f.text_area :body, class: "form-control", required: true
-    .form-group
-      br
-      = f.submit 'Save' ,class: "btn btn-success btn-sm"
-      br
-      br
-      = link_to "Back", posts_path, class: "btn btn-secondary btn-sm"
-  br
-  - if @error
-    .col-auto
-      small.alert.alert-danger
-        =@error.join(",")
-        
+ .p-3.mb-2.bg-white.text-dark
+  .bg-ligh
+    br    
+    h6
+      |  Add New Post
+    br
+    = form_for :post,url: posts_path do |f|
+      .form-row
+        .form-group.col-sm-3
+          small            
+          = f.text_field :user_id, class: "form-control" , value: current_user.id , readonly: true , hidden: true
+      .form-row
+        .form-group.col-sm-3
+          small            
+          = f.text_field :author, class: "form-control" , value: current_user.username, readonly: true , hidden: true
+      .form-row
+        .form-group.col-sm-3
+          small
+            = f.label :tag
+          = f.text_field :tag, class: "form-control", required: true   
+      .form-row
+        .form-group.col-sm-10
+          small
+            = f.label :body
+          = f.text_area :body, class: "form-control", required: true
+      .form-group
+        br
+        = f.submit 'Save' ,class: "btn btn-success btn-sm"
+        br
+        br
+        = link_to "Back", posts_path, class: "btn btn-secondary btn-sm"
+    br
+    - if @error
+      .col-auto
+        small.alert.alert-danger
+          =@error.join(",")
+          
