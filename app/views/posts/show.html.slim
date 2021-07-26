@@ -56,29 +56,33 @@ br
 				br
 
 
+                -if user_signed_in?
+					#exampleModal.modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"]
+					  .modal-dialog
+					    .modal-content
+					      .modal-header
+					        h5#exampleModalLabel.modal-title
+					          | Add comment
+					        button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
+					      .modal-body
 
-				#exampleModal.modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"]
-				  .modal-dialog
-				    .modal-content
-				      .modal-header
-				        h5#exampleModalLabel.modal-title
-				          | Add comment
-				        button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
-				      .modal-body
-
-				        = form_for :comment,url: post_comments_path(@post,@comment) do |f|
-						    .form-row
-						      .form-group.col-sm-5
-						        small						    
-						        = f.text_field :author, class: "form-control", value: @post.author ,readonly: true , hidden: true
-						    .form-row
-						      .form-group.col-sm-12
-						        small
-						          = f.label :body
-						        = f.text_area :body, class: "form-control",required: true
-						    .form-group
-						      br
-						      = f.submit 'Save' ,class: "btn btn-success btn-sm" 
+					        = form_for :comment,url: post_comments_path(@post,@comment) do |f|
+					            .form-row
+							      .form-group.col-sm-5
+							        small						    
+							        = f.text_field :user_id, class: "form-control", value: current_user.id ,readonly: true , hidden: true
+							    .form-row
+							      .form-group.col-sm-5
+							        small						    
+							        = f.text_field :author, class: "form-control", value: current_user.username ,readonly: true , hidden: true
+							    .form-row
+							      .form-group.col-sm-12
+							        small
+							          = f.label :body
+							        = f.text_area :body, class: "form-control",required: true
+							    .form-group
+							      br
+							      = f.submit 'Save' ,class: "btn btn-success btn-sm"
 				      
 
 
