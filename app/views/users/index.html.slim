@@ -1,60 +1,60 @@
--@users.each do |user|
-
- 
-	     .row 
-			 .col-8		  
-				.shadow.p-3.mb-5.bg-white.rounded
-			      h6.fw-bold  
-			      	=user.username
-		          .col-sm-12
-		              small.text-secondary
-						=user.email
-				  
-
-			 .col-4		  
-				.shadow.p-3.mb-5.bg-white.rounded
-			      small
-			      | Posts :  
-	              =user.posts.count
-	              br
-
-	              small
-			      | Comments :  
-	              =user.comments.count
-	              br
-
-	              small
-			      | Has likes: 
-			      -@x=0 
-	              -user.posts.each do |post|
-	               
-	               -@x=post.cached_votes_up + @x
-	              =@x
-	              br
-
-	              small
-			      | Has dislikes: 
-			      -@y=0 
-	              -user.posts.each do |post|
-	               
-	               -@y=post.cached_votes_down + @y
-	              =@y
-	              br
-
-	              small
-			      | Average rating: 
-
-			      -@z=0
-			      
-	              -user.posts.each do |post|
-	               
-	               -@z=post.cached_weighted_average + @z
-	                       
-	              -@total=@z / user.posts.count
-
-	              =@total.round(2)
-	             
-	              br
 	                   	
-				 
+.mycontainer2.shadow.p-3.mb-5.bg-white.rounded
+	table.table
+	  thead.text-center
+	    tr
+	      th[scope="col"]
+	        | #
+	      th[scope="col"]
+	        | Name
+	      th[scope="col"]
+	        | Posts
+	      th[scope="col"]
+	        | Comments
+	      th[scope="col"]
+	        | Likes
+	      th[scope="col"]
+	        | Dislikes
+	      th[scope="col"]
+	        | Average rating 
+
+      -@users.each do |user| 
+
+		  tbody.text-center
+		    tr
+		      td
+		        =user.id
+		      td
+		        =user.username
+		      td
+		        =user.posts.count
+		      td
+		        =user.comments.count
+		      td
+		        -@x=0 
+		        -user.posts.each do |post|
+		               
+		         -@x=post.cached_votes_up + @x
+		        =@x
+
+		      td
+		        -@y=0 
+		        -user.posts.each do |post|
+		               
+		         -@y=post.cached_votes_down + @y
+		        =@y
+
+
+		      td
+		       -if user.posts.any?
+		        -@z=0			      
+		        -user.posts.each do |post|	               
+		         -@z=post.cached_weighted_average + @z
+		        -@total=@z / user.posts.count
+		        =@total.round(2)
+		       -else
+		        | no rating
+		                      	                	                	  
+	                      	
+					 
 
