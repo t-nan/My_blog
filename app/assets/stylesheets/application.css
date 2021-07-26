@@ -19,6 +19,12 @@
 	}
 
 
+.mycontainer2 {
+    margin-left:100px;
+    margin-right:100px;
+    }    
+
+
 .beer {
     background-image: url(https://phonoteka.org/uploads/posts/2021-04/1618489208_20-phonoteka_org-p-dlinnii-fon-dlya-saita-21.jpg); 
     background-attachment: fixed;
