@@ -1,5 +1,7 @@
-	                   	
-.mycontainer2.shadow.p-3.mb-5.bg-white.rounded
+	
+.mycontainer2
+  .row
+   .col-auto.shadow.p-3.mb-5.bg-white.rounded
 	table.table
 	  thead.text-center
 	    tr
@@ -25,36 +27,28 @@
 		      td
 		        =user.id
 		      td
-		        =user.username
+		        =link_to user.username, user_path(user)
 		      td
 		        =user.posts.count
 		      td
 		        =user.comments.count
 		      td
-		        -@x=0 
-		        -user.posts.each do |post|
-		               
-		         -@x=post.cached_votes_up + @x
-		        =@x
+		        =user.votes_up
 
 		      td
-		        -@y=0 
-		        -user.posts.each do |post|
-		               
-		         -@y=post.cached_votes_down + @y
-		        =@y
-
+		        =user.votes_down
 
 		      td
-		       -if user.posts.any?
-		        -@z=0			      
-		        -user.posts.each do |post|	               
-		         -@z=post.cached_weighted_average + @z
-		        -@total=@z / user.posts.count
-		        =@total.round(2)
-		       -else
-		        | no rating
-		                      	                	                	  
-	                      	
+		       
+		        =user.average_rating
+		     
+		       	   
+                     
+   .col-auto.text-white
+                
+   		= render "stat", post: @users
+   		
+   	                      	                	                	  
+	             	
 					 
 

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+//Better to construct options first and then pass it as a parameter
+var options = {
+	title: {
+		             
+	},
+	data: [              
+	{
+		// Change type to "doughnut", "line", "splineArea", etc.
+		type: "column",
+		dataPoints: 
+
+		[
+			{ label: "<%= @users.first.username %>",  y: <%= @users.first.average_rating %> },
+			{ label: "orange", y: <%= @users.second.average_rating %>  },
+			{ label: "banana", y: <%= @users.third.average_rating %>  },
+			{ label: "mango",  y: <%= @users.fourth.average_rating %>  },
+			{ label: "grape",  y: <%= @users.fifth.average_rating %>  }
+		]
+	}
+	]
+};
+
+$("#chartContainer").CanvasJSChart(options);
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 25%;"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

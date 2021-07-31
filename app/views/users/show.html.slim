@@ -1,0 +1,38 @@
+br
+.mycontainer
+	.row
+      -@posts.each do |post|
+		.col-8
+		  .shadow.p-3.mb-5.bg-white.rounded
+			h6.text-secondary
+				=post.author
+				| :
+			small.text-secondary
+				=post.tag 
+			h6.lh-lg
+				=post.body
+
+			p.fw-ligh
+			  small
+				= post.created_at.strftime ("%e %b %y, at %H:%M")
+
+			-if post.created_at < post.updated_at
+			 p.fw-ligh
+			  small.text-danger
+			   | Edited :
+			   = post.updated_at.strftime ("%e %b %y, at %H:%M")
+            
+        p.fw-ligh
+
+	       
+				
+
+
+			  
+
+						
+
+
+
+					
+						  
