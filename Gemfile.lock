@@ -91,6 +91,9 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
+    font_awesome5_rails (1.5.0)
+      nokogiri (>= 1.11.3)
+      railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -239,6 +242,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  font_awesome5_rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
