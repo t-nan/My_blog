@@ -59,6 +59,16 @@ GEM
     acts_as_votable (0.13.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    administrate (0.16.0)
+      actionpack (>= 5.0)
+      actionview (>= 5.0)
+      activerecord (>= 5.0)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (>= 4.0)
+      kaminari (>= 1.0)
+      momentjs-rails (~> 2.8)
+      sassc-rails (~> 2.1)
+      selectize-rails (~> 0.6)
     autoprefixer-rails (10.2.5.1)
       execjs (> 0)
     bcrypt (3.1.16)
@@ -82,6 +92,8 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    datetime_picker_rails (0.0.7)
+      momentjs-rails (>= 2.8.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -91,15 +103,28 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
-    font_awesome5_rails (1.5.0)
-      nokogiri (>= 1.11.3)
-      railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    jquery-rails (4.4.0)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -113,6 +138,8 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.5.3)
     minitest (5.14.4)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     msgpack (1.4.2)
     nio4r (2.5.7)
     nokogiri (1.11.7)
@@ -167,6 +194,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rolify (6.0.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -178,6 +206,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selectize-rails (0.12.6)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -227,7 +256,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -237,17 +265,18 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable
+  administrate
   bootsnap (>= 1.4.2)
   bootstrap
   byebug
   capybara (>= 2.15)
   devise
-  font_awesome5_rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
   rails (~> 6.0.4)
   ransack (~> 2.4)
+  rolify
   sass-rails (>= 6)
   selenium-webdriver
   slim-rails
@@ -259,7 +288,6 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
-  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 2.6.7p197

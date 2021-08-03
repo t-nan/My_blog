@@ -38,7 +38,9 @@ gem 'acts_as_votable'
 
 gem 'ransack', '~> 2.4'
 
-gem 'will_paginate', '~> 3.3'
+gem 'rolify'
+
+gem "administrate"
 
 
 
