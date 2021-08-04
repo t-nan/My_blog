@@ -42,21 +42,16 @@ class PostDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     user
-    comments
-   
     id
     author
-    tag
-    body
     created_at
     updated_at
-    cached_votes_total
-    cached_votes_score
     cached_votes_up
     cached_votes_down
-    cached_weighted_score
-    cached_weighted_total
     cached_weighted_average
+    tag
+    body
+    comments
   ].freeze
 
   # FORM_ATTRIBUTES
