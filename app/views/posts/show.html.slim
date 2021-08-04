@@ -41,17 +41,21 @@ br
 					| Log in to vote & comment
 
 
+            -if user_signed_in? &&  current_user.id==@post.user_id	
+
+
+
+
 		  p		
 
 			    -if user_signed_in? &&  current_user.id==@post.user_id	
 				
-					br		
+						
 			    	= link_to 'Edit',edit_post_path(@post) ,class: "btn btn-warning btn-sm"
-			      	|  or 
-			    	= link_to 'Delete',post_path(@post),method: :delete ,class: "btn btn-danger btn-sm"
+			      
 			    	br
 			    	br
-				= link_to "Back", posts_path, class: "btn btn-secondary btn-sm"
+				= link_to "Back", posts_path, class: "btn btn-warning btn-sm"
 				br
 				br
 
