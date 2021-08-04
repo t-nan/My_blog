@@ -3,13 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy ,:upvote ,:downvote]
 
   def index
-    @posts = Post.all.order(cached_votes_score: :desc)
+    @posts = Post.all.order(created_at: :desc)
 
     @posts_count = Post.count
 
     @search = Post.ransack(params[:q])
 
-    @p = @search.result(distinct: true)#paginate(page: params[:page], per_page: 10)
+    @p = @search.result(distinct: true).order(created_at: :desc)#paginate(page: params[:page], per_page: 10)
     
   end
 
