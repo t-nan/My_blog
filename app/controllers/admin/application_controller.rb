@@ -8,9 +8,21 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_admin
+    before_action :calculate_rating
+
+
+    protected
 
     def authenticate_admin
       redirect_to root_path, alert: 'Not authorized.' unless current_user.has_role?(:admin)
+    end
+
+
+    def calculate_rating
+      @users=User.all.order(average_rating: :desc)
+      @votes_up=UsersAverage.new.votes_down(@users)
+      @votes_down=UsersAverage.new.votes_up(@users)
+      @average_rating=UsersAverage.new.average_rating(@users)
     end
 
     # Override this value to specify the number of elements to display at a time
