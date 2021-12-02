@@ -1,5 +1,6 @@
-require "administrate/field/base"
+# frozen_string_literal: true
 
-  class HasManyRolesField < Administrate::Field::HasMany
-  end
+require 'administrate/field/base'
 
+class HasManyRolesField < Administrate::Field::HasMany
+end
