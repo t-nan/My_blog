@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class PostDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -23,7 +25,7 @@ class PostDashboard < Administrate::BaseDashboard
     cached_votes_down: Field::Number,
     cached_weighted_score: Field::Number,
     cached_weighted_total: Field::Number,
-    cached_weighted_average: Field::Number.with_options(decimals: 2),
+    cached_weighted_average: Field::Number.with_options(decimals: 2)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,7 +36,7 @@ class PostDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     user
     comments
-    
+
     id
   ].freeze
 
@@ -60,7 +62,7 @@ class PostDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     user
     comments
-    
+
     author
     tag
     body

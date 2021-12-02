@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -23,7 +25,7 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     votes_up: Field::Number,
     votes_down: Field::Number,
-    average_rating: Field::Number.with_options(decimals: 2),
+    average_rating: Field::Number.with_options(decimals: 2)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -39,13 +41,13 @@ class UserDashboard < Administrate::BaseDashboard
     comments
     roles
     average_rating
-    
+
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    
+
     roles
     id
     username
@@ -68,7 +70,7 @@ class UserDashboard < Administrate::BaseDashboard
     roles
     username
     email
-  
+
     votes_up
     votes_down
     average_rating
