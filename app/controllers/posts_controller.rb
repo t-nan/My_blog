@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  
-  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy ,:upvote ,:downvote]
+  before_action :authenticate_user!, only: %i[new create edit update destroy upvote downvote]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -9,8 +10,7 @@ class PostsController < ApplicationController
 
     @search = Post.ransack(params[:q])
 
-    @p = @search.result(distinct: true).order(created_at: :desc)#paginate(page: params[:page], per_page: 10)
-    
+    @p = @search.result(distinct: true).order(created_at: :desc) # paginate(page: params[:page], per_page: 10)
   end
 
   def upvote
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     else
       @post.upvote_by current_user
     end
-    render "vote.js.erb"
+    render 'vote.js.erb'
   end
 
   def downvote
@@ -30,60 +30,53 @@ class PostsController < ApplicationController
     else
       @post.downvote_by current_user
     end
-    render "vote.js.erb"
+    render 'vote.js.erb'
   end
-
 
   def show
-    @post=Post.find(params[:id])
-    @comments=@post.comments.order(created_at: :desc)
+    @post = Post.find(params[:id])
+    @comments = @post.comments.order(created_at: :desc)
   end
 
-  def new     
+  def new
+    @post = Post.new
   end
 
   def create
-
-    @post=Post.new(post_params) 
+    @post = Post.new(post_params)
 
     if @post.save
-      redirect_to posts_path, notice: "Your question has been saved!"
+      redirect_to posts_path, notice: 'Your question has been saved!'
     else
-      @error=@post.errors.full_messages
-      render 'new'      
+      @error = @post.errors.full_messages
+      render 'new'
     end
-
   end
 
   def edit
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
 
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
-      @error=@post.errors.full_messages
+      @error = @post.errors.full_messages
       render 'edit'
     end
-
   end
 
   def destroy
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.delete
     redirect_to posts_path
   end
 
-
   private
 
-
   def post_params
-    params.require(:post).permit(:user_id,:author,:tag,:body)
+    params.require(:post).permit(:user_id, :author, :tag, :body)
   end
-
 end
