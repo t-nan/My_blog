@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
 
@@ -7,20 +9,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   validates :username, uniqueness: true
-  validates :roles, presence: true     
+  validates :roles, presence: true
 
   has_many :posts
-  has_many :comments       
+  has_many :comments
 
   acts_as_voter
 
-
-  
   def set_default_role
-    self.add_role(:normal)
+    add_role(:normal)
   end
-
-         
 end
